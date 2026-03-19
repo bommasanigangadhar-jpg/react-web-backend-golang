@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import './HelloWorld.css';
+import './App.css';
 
 export default class AppClass extends Component {
 
