@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import './App.css';
 import Input from "./Input";
 
@@ -9,6 +9,12 @@ function HelloWorld(props) {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [dob, setDob] = useState("");
+
+    // Refs
+
+    const firstNameRef = useRef();
+    const lastNameRef = useRef();
+    const dobRef = useRef();
 
     const toggleTrue = () => {
         if(isTrue) {
@@ -68,6 +74,11 @@ function HelloWorld(props) {
         setFirstName("");
         setLastName("");
         setDob("");
+
+        firstNameRef.current.value="";
+        lastNameRef.current.value="";
+        dobRef.current.value="";
+      
     }
 
     return (
@@ -87,20 +98,22 @@ function HelloWorld(props) {
                 
                 <div className="mb-3">
                     <label className="form-label" htmlFor="first-name">First Name</label>
-                    <Input
+                    <input
                         type="text"
                         name="first-name"
                         id="first-name"
+                        ref={firstNameRef}
                         autoComplete="first-name-new"
                         className="form-control"
                         onChange= {(event) => setFirstName(event.target.value)}
-                    ></Input>
+                    ></input>
 
                     <Input
                         title="Last Name"
                         type="text"
                         name="last-name"
                         id="last-name"
+                        ref={lastNameRef}
                         autoComplete="last-name-new"
                         className="form-control"
                         onChange= {(event) => setLastName(event.target.value)}
@@ -110,6 +123,7 @@ function HelloWorld(props) {
                         title="Date Of Birth"
                         type="date"
                         name="dob"
+                        ref={dobRef}
                         autoComplete="dob-new"
                         className="form-control"
                         onChange= {(event) => setDob(event.target.value)}
