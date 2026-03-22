@@ -10,6 +10,7 @@ import ManageCatalogue from './components/ManageCatalogue';
 import GraphQL from './components/GraphQL';
 import Login from './components/Login';
 import EditMovie from './components/EditMovie';
+import Movie from './components/Movie';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "/movies",
         element: <Movies />,
+      },
+      {
+        path: "/movies/:id",
+        element: <Movie />,
       },
       {
         path: "/genres",
